@@ -99,7 +99,11 @@ scaleButton.addEventListener("click", function () {
     
     console.log("recipe scaled");
     console.log(desiredServings);
-
+    const scaledRecipe = document.querySelector("#scaled-recipe");
+    if (desiredServings <= 0) {
+        scaledRecipe.textContent = "please enter a number above 0";
+        return;
+    }
     const originalServings = 8;
     const scaleFactor = desiredServings / originalServings;
 
@@ -107,7 +111,7 @@ scaleButton.addEventListener("click", function () {
     const scaledFilling = scaleRecipe(cinnamonRollFilling, scaleFactor);
     const scaledIcing = scaleRecipe(cinnamonRollIcing, scaleFactor);
 
-    const scaledRecipe = document.querySelector("#scaled-recipe");
+    
     scaledRecipe.textContent = "";
 
     displayRecipeSection("for the dough", scaledDough, scaledRecipe);
