@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html>
+
+    <head>
+        <title>baking Calculator</title>
+    </head>
+
+    <body>
+        <section> 
+            <h1>welcome to my recipes</h1>
+            <p>and first iteration of this website</p> 
+        </section>
+        
+        <section>
+            <label for ="recipe-select">choose a recipe:</label>
+            <select name="recipe" id="recipe-select">
+                <option value="">-- recipes -- </option>
+                <option value="cinnamon-rolls">cinnamon rolls</option>
+                <option value="chocolate-chip-cookies">chocolate chip cookies</option>
+            
+            </select>
+
+        </section>
+        <section>
+            <h2>cinnamon rolls</h2>
+            <h2>ingredients</h2>
+            <h3>for the dough:</h3>
+            <ul>
+                <li>450g flour</li>
+                <li>100g white sugar</li>
+                <li>8g salt</li>
+                <li>2g baking soda</li>
+                <li>7g active dry yeast</li>
+                <li>115g milk</li>
+                <li>225g plain yogurt (greek yogurt, sour cream)</li>
+                <li>1 stick of unsalted butter (115g)</li>
+              
+            </ul>
+            <h3>for the filling:</h3>
+            <ul>
+                <li>1 stick of unsalted softened butter (115g)</li>
+                <li>150g brown sugar</li>
+                <li>20g cinnamon</li>
+                <li>1g salt</li>
+            </ul>
+            <h3>for the icing:</h3>
+            <ul> 
+                <li>25g cream cheese</li>
+                <li>75g heavy cream</li>
+                <li>150g powdered sugar</li>
+                <li>10g water</li>
+                <li>1g salt</li>
+            </ul>
+        </section>
+        <section>
+            <h2>instructions</h2>
+            <p>...otw...</p>
+        </section>
+        <section>
+            <h2>recipe scaler</h2>
+            <p>original servings: <span id="original-servings">8</span></p>
+            <label for="servings">desired servings:</label>
+            <input type="number" id="servings" min="2">
+            <p><button type="button" id="scale-button">scale recipe</button></p>           
+        </section>
+        <section>
+            <h2>scaled recipe</h2>
+            <div id="scaled-recipe">
+                <p>... otw ...</p>
+            </div>
+        </section>
+
+
+
+    <script src="script.js"></script>
+
+
+
+
+    </body>
+</html>
