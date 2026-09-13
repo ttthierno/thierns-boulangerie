@@ -100,6 +100,7 @@ scaleButton.addEventListener("click", function () {
     console.log("recipe scaled");
     console.log(desiredServings);
     const scaledRecipe = document.querySelector("#scaled-recipe");
+    // number must be above 0 
     if (desiredServings <= 0) {
         scaledRecipe.textContent = "please enter a number above 0";
         return;
@@ -125,10 +126,13 @@ function scaleRecipe(ingredients, scaleFactor) {
     // array to hold ingredients
     const scaledIngredients = [];
     for (let i = 0; i < ingredients.length; i++) {
+        // scaling the amount and rounding
+        const scaledAmount = ingredients[i].amount*scaleFactor;
+        const roundedAmount = Math.round(scaledAmount*10) / 10;
         // scaling each ingredient
         const scaledIngredient = {
             ingredient: ingredients[i].ingredient,
-            amount: ingredients[i].amount*scaleFactor,
+            amount: roundedAmount,
             unit: ingredients[i].unit
         };
         // adding to new list
