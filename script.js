@@ -110,19 +110,48 @@ scaleButton.addEventListener("click", function () {
     const scaledRecipe = document.querySelector("#scaled-recipe");
     scaledRecipe.textContent = "";
 
+    displayRecipeSection("for the dough", scaledDough, scaledRecipe);
+    displayRecipeSection("for the filling", scaledFilling, scaledRecipe);
+    displayRecipeSection("for the icing", scaledIcing, scaledRecipe);    
+
     
 });
 
 function scaleRecipe(ingredients, scaleFactor) {
+    // array to hold ingredients
     const scaledIngredients = [];
     for (let i = 0; i < ingredients.length; i++) {
+        // scaling each ingredient
         const scaledIngredient = {
             ingredient: ingredients[i].ingredient,
             amount: ingredients[i].amount*scaleFactor,
             unit: ingredients[i].unit
         };
+        // adding to new list
         scaledIngredients.push(scaledIngredient);
     }
     return scaledIngredients;
+}
+
+// helper to display recipe section
+function displayRecipeSection(title, ingredients, container) {
+    // creating the header
+    const heading = document.createElement("h3");
+    heading.textContent = title;
+    container.appendChild(heading);
+    // creating unordered list
+    const list = document.createElement("ul");
+
+    for (let i = 0; i < ingredients.length; i++) {
+        // listing the ingredients
+        const listItem = document.createElement("li");
+        listItem.textContent = 
+            ingredients[i].amount + " " +
+            ingredients[i].unit + " " +
+            ingredients[i].ingredient;
+        list.appendChild(listItem);
+    }
+    container.appendChild(list)
+
 }
 
