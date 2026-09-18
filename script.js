@@ -114,17 +114,23 @@ scaleButton.addEventListener("click", function () {
     
     const scaleFactor = desiredServings / cinnamonRolls.originalServings;
 
-    const scaledDough = scaleRecipe(cinnamonRolls.sections.dough, scaleFactor);
-    const scaledFilling = scaleRecipe(cinnamonRolls.sections.filling, scaleFactor);
-    const scaledIcing = scaleRecipe(cinnamonRolls.sections.icing, scaleFactor);
-
     
     scaledRecipe.textContent = "";
 
-    displayRecipeSection("for the dough", scaledDough, scaledRecipe);
-    displayRecipeSection("for the filling", scaledFilling, scaledRecipe);
-    displayRecipeSection("for the icing", scaledIcing, scaledRecipe);    
 
+    const sectionNames = Object.keys(cinnamonRolls.sections);
+    
+    for (let i = 0; i < sectionNames.length; i++) {
+        const sectionName = sectionNames[i];
+        const ingredients = cinnamonRolls.sections[sectionName];
+        const scaledIngredients = scaleRecipe(ingredients, scaleFactor);
+
+        displayRecipeSection(
+            "for the " + sectionName,
+            scaledIngredients,
+            scaledRecipe 
+        );
+    }
     
 });
 
