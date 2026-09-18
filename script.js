@@ -1,97 +1,103 @@
 const scaleButton = document.querySelector("#scale-button");
 
-const cinnamonRollDough = [
-    {
-    ingredient: "flour",
-    amount: 450,
-    unit: "g"
-    },
-    {
-    ingredient: "white sugar",
-    amount: 100,
-    unit: "g"
-    },
-    {
-    ingredient: "salt",
-    amount: 8,
-    unit: "g"
-    },
-    {
-    ingredient: "baking soda",
-    amount: 2,
-    unit: "g"
-    },
-    {
-    ingredient: "dry active yeast",
-    amount: 7,
-    unit: "g"
-    },
-    {
-    ingredient: "milk",
-    amount: 115,
-    unit: "g"
-    },
-    {
-    ingredient: "yogurt",
-    amount: 225,
-    unit: "g"
-    },
-    {
-    ingredient: "butter",
-    amount: 115,
-    unit: "g"
-    },
-    
-];
-const cinnamonRollFilling = [
-    {
-    ingredient: "butter",
-    amount: 115,
-    unit: "g"
-    },
-    {
-    ingredient: "brown sugar",
-    amount: 150,
-    unit: "g"
-    },
-    {
-    ingredient: "cinnamon",
-    amount: 20,
-    unit: "g"
-    },
-    {
-    ingredient: "salt",
-    amount: 1,
-    unit: "g"
-    },
-];
-const cinnamonRollIcing = [
-    {
-    ingredient: "cream cheese",
-    amount: 25,
-    unit: "g"
-    },
-    {
-    ingredient: "heavy cream",
-    amount: 75,
-    unit: "g"
-    },
-    {
-    ingredient: "powdered sugar",
-    amount: 150,
-    unit: "g"
-    },
-    {
-    ingredient: "water",
-    amount: 10,
-    unit: "g"
-    },
-    {
-    ingredient: "salt",
-    amount: 1,
-    unit: "g"
-    },
-];
+const cinnamonRolls = {
+    name: "Cinnamon Rolls",
+    originalServings: 8,
+    sections: {
+        dough: [
+            {
+            ingredient: "flour",
+            amount: 450,
+            unit: "g"
+            },
+            {
+            ingredient: "white sugar",
+            amount: 100,
+            unit: "g"
+            },
+            {
+            ingredient: "salt",
+            amount: 8,
+            unit: "g"
+            },
+            {
+            ingredient: "baking soda",
+            amount: 2,
+            unit: "g"
+            },
+            {
+            ingredient: "dry active yeast",
+            amount: 7,
+            unit: "g"
+            },
+            {
+            ingredient: "milk",
+            amount: 115,
+            unit: "g"
+            },
+            {
+            ingredient: "yogurt",
+            amount: 225,
+            unit: "g"
+            },
+            {
+            ingredient: "butter",
+            amount: 115,
+            unit: "g"
+            },    
+        ],
+        filling: [
+            {
+            ingredient: "butter",
+            amount: 115,
+            unit: "g"
+            },
+            {
+            ingredient: "brown sugar",
+            amount: 150,
+            unit: "g"
+            },
+            {
+            ingredient: "cinnamon",
+            amount: 20,
+            unit: "g"
+            },
+            {
+            ingredient: "salt",
+            amount: 1,
+            unit: "g"
+            },
+        ],
+        icing: [
+            {
+            ingredient: "cream cheese",
+            amount: 25,
+            unit: "g"
+            },
+            {
+            ingredient: "heavy cream",
+            amount: 75,
+            unit: "g"
+            },
+            {
+            ingredient: "powdered sugar",
+            amount: 150,
+            unit: "g"
+            },
+            {
+            ingredient: "water",
+            amount: 10,
+            unit: "g"
+            },
+            {
+            ingredient: "salt",
+            amount: 1,
+            unit: "g"
+            },
+        ]
+    }
+};
+
 
 scaleButton.addEventListener("click", function () {
     // get desired servings
@@ -105,12 +111,12 @@ scaleButton.addEventListener("click", function () {
         scaledRecipe.textContent = "please enter a number above 0";
         return;
     }
-    const originalServings = 8;
-    const scaleFactor = desiredServings / originalServings;
+    
+    const scaleFactor = desiredServings / cinnamonRolls.originalServings;
 
-    const scaledDough = scaleRecipe(cinnamonRollDough, scaleFactor);
-    const scaledFilling = scaleRecipe(cinnamonRollFilling, scaleFactor);
-    const scaledIcing = scaleRecipe(cinnamonRollIcing, scaleFactor);
+    const scaledDough = scaleRecipe(cinnamonRolls.sections.dough, scaleFactor);
+    const scaledFilling = scaleRecipe(cinnamonRolls.sections.filling, scaleFactor);
+    const scaledIcing = scaleRecipe(cinnamonRolls.sections.icing, scaleFactor);
 
     
     scaledRecipe.textContent = "";
