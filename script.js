@@ -1,9 +1,12 @@
 const scaleButton = document.querySelector("#scale-button");
-
+const recipeSelect = document.querySelector("#recipe-select");
+const recipeIngredients = document.querySelector("#recipe-ingredients");
+const scaledRecipe = document.querySelector("#scaled-recipe");
+const servingsInput = document.querySelector("#servings");
 const recipes = {
 
     "cinnamon-rolls": {
-        name: "Cinnamon Rolls",
+        name: "cinnamon rolls",
         originalServings: 8,
         sections: {
             dough: [
@@ -165,18 +168,47 @@ const recipes = {
     }
 };
 
+recipeSelect.addEventListener("change", function() {
+    const selectedRecipeName = recipeSelect.value;
+    const selectedRecipe = recipes[selectedRecipeName];
+    // clear old ingredients
+    recipeIngredients.textContent = "";
+    scaledRecipe.textContent = "";
+    servingsInput.value = "";
+
+    if (!selectedRecipe) {
+        return;
+    }
+    // display recipe title
+    const recipeTitle = document.createElement("h2");
+    recipeTitle.textContent = selectedRecipe.name;
+    recipeIngredients.appendChild(recipeTitle);
+    const servingsText = document.createElement("p");
+    servingsText.textContent = "original servings: " + selectedRecipe.originalServings;
+    recipeIngredients.appendChild(servingsText);
+    // display recipe sections
+    const sectionNames = Object.keys(selectedRecipe.sections);
+
+    for (let i = 0; i < sectionNames.length; i++) {
+        const sectionName = sectionNames[i];
+        const ingredients = selectedRecipe.sections[sectionName];
+
+        displayRecipeSection(
+            "for the " + sectionName,
+            ingredients,
+            recipeIngredients
+        );
+    }
+});
+
 
 scaleButton.addEventListener("click", function () {
     // get desired servings
-    const desiredServings = Number(document.querySelector("#servings").value); 
+    const desiredServings = Number(servingsInput.value); 
     
     console.log("recipe scaled");
     console.log(desiredServings);
-    const scaledRecipe = document.querySelector("#scaled-recipe");
    
-    
-    
-
     const selectedRecipeName = document.querySelector("#recipe-select").value;
     const selectedRecipe = recipes[selectedRecipeName];
     if (!selectedRecipe) {
